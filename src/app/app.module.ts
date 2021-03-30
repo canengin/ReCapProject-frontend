@@ -10,10 +10,8 @@ import { ColorComponent } from './components/color/color.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { UserComponent } from './components/user/user.component';
 import { NaviComponent } from './components/navi/navi.component';
-import { UseroperationclaimComponent } from './components/useroperationclaim/useroperationclaim.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CardtoComponent } from './components/cardto/cardto.component';
-import { OperationclaimComponent } from './components/operationclaim/operationclaim.component';
 import { RentaldtoComponent } from './components/rentaldto/rentaldto.component';
 
 
@@ -26,10 +24,8 @@ import { RentaldtoComponent } from './components/rentaldto/rentaldto.component';
     RentalComponent,
     UserComponent,
     NaviComponent,
-    UseroperationclaimComponent,
     CustomerComponent,
     CardtoComponent,
-    OperationclaimComponent,
     RentaldtoComponent
   ],
   imports: [
