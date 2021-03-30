@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Cardto } from 'src/app/models/cardto';
-import { CardtoService } from 'src/app/services/cardto.service';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-cardto',
@@ -8,21 +9,23 @@ import { CardtoService } from 'src/app/services/cardto.service';
   styleUrls: ['./cardto.component.css']
 })
 export class CardtoComponent implements OnInit {
-  cardtos: Cardto[] = [];
-  dataLoaded=false;
-  
-  constructor(private cardtoService:CardtoService) { }
+  carDtos:Cardto;
+
+  constructor(private carService:CarService, private activetedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-   this.getCardtos();
-  }
-  
-  getCardtos(){
-    this.cardtoService.getCardtos(1).subscribe(response=>{
-      this.cardtos=response.data
-      this.dataLoaded=true;
-    })
-    
+    this.activetedRoute.params.subscribe(params => {
+      if(params["carId"])
+      {
+        this.getCarDtos(params["carId"]);
+      }
+    });
   }
 
+  getCarDtos(id:number)
+  {
+    this.carService.getCardtos(id).subscribe(response => {
+      this.carDtos = response.data[0];
+    })
+  }
 }

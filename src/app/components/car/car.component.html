@@ -1,25 +1,25 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
 <table class="table">
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Ürün Adı</th>
-            <th>Marka ID</th>
-            <th>Renk ID</th>
-            <th>Günlük Fiyat</th>
-            <th>Açıklama</th>
-            <th>Kira Durumu</th>
-        </tr>
+      <tr>
+        <th>SIRA</th>
+        <th>MARKA</th>
+        <th>RENK</th>
+        <th>ARAÇ ADI</th>
+        <th>YIL</th>
+        <th>FİYAT</th>
+        <th>KIRALAMA DURUMU</th>
+      </tr>
     </thead>
-    <tr *ngFor="let car of cars">
-        <td>{{car.id}}</td>
-        <td>{{car.name}}</td>
-        <td>{{car.brandID}}</td>
-        <td>{{car.colorID}}</td>
-        <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
-        <td>{{car.isRented}}</td>
-    </tr>
-</table>
+    <tbody>
+      <tr (click)="getCardtos(car.carID)" routerLink="/cars/cardto/{{ car.carID }}"
+      *ngFor="let car of carDtos">
+        <td>{{ car.carID }}</td>
+        <td>{{ car.brandName }}</td>
+        <td>{{ car.colorName }}</td>
+        <td>{{ car.carName }}</td>
+        <td>{{ car.modelYear }}</td>
+        <td>{{ car.dailyPrice}}</td>
+        <td>{{ car.isRented }}</td>
+      </tr>
+    </tbody>
+  </table>
