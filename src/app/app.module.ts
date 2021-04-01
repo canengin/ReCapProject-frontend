@@ -26,7 +26,7 @@ import { RentaldtoComponent } from './components/rentaldto/rentaldto.component';
     NaviComponent,
     CustomerComponent,
     CardtoComponent,
-    RentaldtoComponent
+    RentaldtoComponent,
   ],
   imports: [
     BrowserModule,

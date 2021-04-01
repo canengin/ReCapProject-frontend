@@ -1,25 +1,23 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th>SIRA</th>
-        <th>MARKA</th>
-        <th>RENK</th>
-        <th>ARAÇ ADI</th>
-        <th>YIL</th>
-        <th>FİYAT</th>
-        <th>KIRALAMA DURUMU</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr (click)="getCardtos(car.carID)" routerLink="/cars/cardto/{{ car.carID }}"
-      *ngFor="let car of carDtos">
-        <td>{{ car.carID }}</td>
-        <td>{{ car.brandName }}</td>
-        <td>{{ car.colorName }}</td>
-        <td>{{ car.carName }}</td>
-        <td>{{ car.modelYear }}</td>
-        <td>{{ car.dailyPrice}}</td>
-        <td>{{ car.isRented }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>SIRA</th>
+      <th>MARKA</th>
+      <th>RENK</th>
+      <th>ARAÇ ADI</th>
+      <th>YIL</th>
+      <th>FİYAT</th>
+      <th>KIRALAMA DURUMU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr (click)="getCardtos(car.id)" routerLink="/cars/cardto/{{ car.id }}" *ngFor="let car of cars">
+      <td>{{ car.id }}</td>
+      <td>{{ car.brandID }}</td>
+      <td>{{ car.colorID }}</td>
+      <td>{{ car.name }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice}}</td>
+      <td>{{ car.isRented }}</td>
+  </tbody>
+</table>
