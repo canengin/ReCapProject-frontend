@@ -16,7 +16,8 @@ export class CarComponent implements OnInit {
   carDtos: Cardto[] = [];
   carImages:CarImage[] = [];
 
-  path = "https://localhost:44308/Images/";
+  path = "https://localhost:44308/Images";
+
   constructor(
     private carService: CarService,
     private carImageService:CarimageService,
@@ -30,8 +31,7 @@ export class CarComponent implements OnInit {
       } else if (params['colorId']) {
         this.getCarsByColor(params['colorId']);
       } else {
-        this.getCars();
-        this.getCarImage(params["Id"]);
+        this.getAllCardtos();
       }
     });
   }

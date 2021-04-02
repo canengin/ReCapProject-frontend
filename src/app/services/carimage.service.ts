@@ -18,8 +18,8 @@ export class CarimageService {
      let newPath=this.apiUrl+"carimages/getcarlistbycarid?carId="+carId;
      return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
    }
-   getCarImage(Id:number):Observable<ListResponseModel<CarImage>>{
-    let newPath=this.apiUrl+"carimages/getcarimagebyid?Id="+Id;
+   getCarImage(carId:number):Observable<ListResponseModel<CarImage>>{
+    let newPath=this.apiUrl+"carimages/getcarimagebyid?Id="+carId;
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
   }
 }

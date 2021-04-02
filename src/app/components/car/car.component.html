@@ -1,23 +1,23 @@
 <table class="table">
   <thead>
     <tr>
-      <th>SIRA</th>
+      <th>FOTOĞRAF</th>
       <th>MARKA</th>
       <th>RENK</th>
-      <th>ARAÇ ADI</th>
-      <th>YIL</th>
-      <th>FİYAT</th>
-      <th>KIRALAMA DURUMU</th>
+      <th>Fiyat</th>
     </tr>
   </thead>
   <tbody>
-    <tr (click)="getCardtos(car.id)" routerLink="/cars/cardto/{{ car.id }}" *ngFor="let car of cars">
-      <td>{{ car.id }}</td>
-      <td>{{ car.brandID }}</td>
-      <td>{{ car.colorID }}</td>
-      <td>{{ car.name }}</td>
-      <td>{{ car.modelYear }}</td>
+    <tr (click)="getCardtos(car.carID)" routerLink="/cars/cardto/{{ car.carID }}" *ngFor="let car of carDtos">
+      <td>
+        <!-- car.imagePath[0].imagePath!=null -->
+        <img *ngIf="car.imagePath!=null" src="https://localhost:44308/Images/{{ car.imagePath }}"
+          class="img-thumbnail" />
+        <img *ngIf="car.imagePath==null" src="https://localhost:44308/Images/default.jpeg" class="img-thumbnail" />
+      </td>
+      <td>{{ car.brandName }}</td>
       <td>{{ car.dailyPrice}}</td>
-      <td>{{ car.isRented }}</td>
+      <td>{{car.dailyPrice|currency}}</td>
+    </tr>
   </tbody>
 </table>

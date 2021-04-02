@@ -6,6 +6,7 @@ export interface Cardto{
         modelYear:number;
         dailyPrice:number;
         description:string;
+        imagePath:string;
         isRented:boolean;
         brandID:number,
         colorID:number
