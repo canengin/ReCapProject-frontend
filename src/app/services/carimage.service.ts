@@ -11,15 +11,12 @@ export class CarimageService {
 
   apiUrl = 'https://localhost:44308/api/';
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient:HttpClient) { }
 
-   }
-   getCarImagesList(carId:number):Observable<ListResponseModel<CarImage>>{
-     let newPath=this.apiUrl+"carimages/getcarlistbycarid?carId="+carId;
-     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
-   }
-   getCarImage(carId:number):Observable<ListResponseModel<CarImage>>{
-    let newPath=this.apiUrl+"carimages/getcarimagebyid?Id="+carId;
-    return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
-  }
+  getCarImages(carId:number):Observable<ListResponseModel<CarImage>> {
+
+    let newPath = this.apiUrl + "carimages/getcarlistbycarid?carId=" + carId;
+      return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
+}
+
 }

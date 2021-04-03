@@ -15,6 +15,7 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   carDtos: Cardto[] = [];
   carImages:CarImage[] = [];
+  currentCar:Car;
 
   path = "https://localhost:44308/Images";
 
@@ -27,11 +28,11 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
-        this.getCarsByBrand(params['brandId']);
+        this.getCarsByBrandId(params['brandId']);
       } else if (params['colorId']) {
-        this.getCarsByColor(params['colorId']);
+        this.getCarsByColorId(params['colorId']);
       } else {
-        this.getAllCardtos();
+        this.getCars();
       }
     });
   }
@@ -41,13 +42,13 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
     });
   }
-  getCarsByBrand(brandId: number) {
-    this.carService.getCarsByBrand(brandId).subscribe((response) => {
+  getCarsByBrandId(brandId: number) {
+    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       this.cars = response.data;
     });
   }
-  getCarsByColor(colorId: number) {
-    this.carService.getCarsByColor(colorId).subscribe((response) => {
+  getCarsByColorId(colorId: number) {
+    this.carService.getCarsByColorId(colorId).subscribe((response) => {
       this.cars = response.data;
     });
   }
@@ -61,16 +62,19 @@ export class CarComponent implements OnInit {
       this.carDtos = response.data;
     });
   }
-  getCarImage(Id:number)
+  getCarImages(carId:number)
   {
-    this.carImageService.getCarImage(Id).subscribe(response => {
+    this.carImageService.getCarImages(carId).subscribe(response => {
       this.carImages = response.data;
     });
   }
-
   getImagePath(image:string)
   {
     let newPath = this.path + image;
     return newPath; 
   }
+  setCurrentCar(car:Car) {
+    this.currentCar = car;
+  }
 }
+

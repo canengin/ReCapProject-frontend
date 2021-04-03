@@ -4,4 +4,7 @@
   <li class="list-group-item">Yıl: {{ carDtos.modelYear }}</li>
   <li class="list-group-item">Fiyat: {{ carDtos.dailyPrice }}</li>
   <li class="list-group-item">Kiralama Durum: {{ carDtos.isRented }}</li>
+  <li *ngFor="let image of carImages" class="list-group-item img-gallery ">
+    <img [src]="getImagePath(image.imagePath)" class="img-fluid" [alt]="getImagePath(image.imagePath)" />
+  </li>
 </ul>

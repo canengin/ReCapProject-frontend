@@ -13,14 +13,19 @@ import { CarimageService } from 'src/app/services/carimage.service';
 export class CardtoComponent implements OnInit {
   carDtos:Cardto;
   carImages:CarImage[]=[];
-  constructor(private carService:CarService, private activetedRoute:ActivatedRoute,private carImageService:CarimageService) { }
+
+  path = "https://localhost:44308/Images/";
+  
+  constructor(private carService:CarService, 
+    private activetedRoute:ActivatedRoute,
+    private carImageService:CarimageService) { }
 
   ngOnInit(): void {
     this.activetedRoute.params.subscribe(params => {
       if(params["carId"])
       {
         this.getCarDtos(params["carId"]);
-        this.getCarImagesByCarId(params["carId"]);
+        this.getCarImages(params["carId"]);
       }
     });
   }
@@ -31,11 +36,15 @@ export class CardtoComponent implements OnInit {
       this.carDtos = response.data[0];
     })
   }
-  getCarImagesByCarId(id:number)
+  getCarImages(id:number)
   {
-    this.carImageService.getCarImagesList(id).subscribe(response => {
+    this.carImageService.getCarImages(id).subscribe(response => {
       this.carImages = response.data;
-      console.log(response)
-    })
+    });
+  }
+  getImagePath(image:string)
+  {
+    let newPath = this.path + image;
+    return newPath; 
   }
 }
