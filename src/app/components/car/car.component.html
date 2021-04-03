@@ -10,8 +10,10 @@
   <tbody>
     <tr (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" *ngFor="let car of cars">
       <td>
-        <div ngFor="let image of carImages" class="list-group-item img-gallery ">
-          <div><img [src]="" class="img-fluid" [alt]="" /></div>
+        <div ngFor="let image of carImages">
+          <div>
+            <img src="https://localhost:44308/Images/default.jpg" class="img-fluid" />
+          </div>
         </div>
       </td>
       <td>{{ car.id }}</td>

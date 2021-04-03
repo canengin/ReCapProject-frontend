@@ -62,9 +62,9 @@ export class CarComponent implements OnInit {
       this.carDtos = response.data;
     });
   }
-  getCarImages(carId:number)
+  getCarImage(carId:number)
   {
-    this.carImageService.getCarImages(carId).subscribe(response => {
+    this.carImageService.getCarImage(carId).subscribe(response => {
       this.carImages = response.data;
     });
   }
