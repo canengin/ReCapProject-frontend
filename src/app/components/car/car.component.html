@@ -18,10 +18,8 @@
   <tbody class="bodydto">
     <tr  *ngFor="let car of cars | filterPipe:filterText">
       <td>
-        <div ngFor="let image of carImages">
-          <div>
-            <img src="https://localhost:44308/Images/default.jpg" class="img-fluid" />
-          </div>
+        <div>
+            <img src="https://localhost:44308/Images/{{car.previewImagePath}}" class="img-fluid" />
         </div>
       </td>
       <td>{{ car.name }}</td>

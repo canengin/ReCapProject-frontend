@@ -19,7 +19,6 @@ export class CarComponent implements OnInit {
   currentCar:Car;
   filterText="";
   
-  path = "https://localhost:44308/Images";
 
   constructor(
     private carService: CarService,
@@ -44,16 +43,25 @@ export class CarComponent implements OnInit {
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
+      this.cars.forEach(element => {
+        this.setPreviewImage(element)
+      });
     });
   }
   getCarsByBrandId(brandId: number) {
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       this.cars = response.data;
+      this.cars.forEach(element => {
+        this.setPreviewImage(element)
+      });
     });
   }
   getCarsByColorId(colorId: number) {
     this.carService.getCarsByColorId(colorId).subscribe((response) => {
       this.cars = response.data;
+      this.cars.forEach(element => {
+        this.setPreviewImage(element)
+      });
     });
   }
   getCardtos(id: number) {
@@ -74,13 +82,13 @@ export class CarComponent implements OnInit {
       this.carImages = response.data;
     });
   }
-  getImagePath(image:string)
-  {
-    let newPath = this.path + image;
-    return newPath; 
-  }
   setCurrentCar(car:Car) {
     this.currentCar = car;
+  }
+  setPreviewImage(car:Car){
+    this.carImageService.getCarImages(car.id).subscribe(response =>{
+      car.previewImagePath=response.data[0].imagePath;
+    })
   }
 }
 
