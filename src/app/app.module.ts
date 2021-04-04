@@ -19,6 +19,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FilterbrandpipePipe } from './pipes/filterbrandpipe.pipe';
 
 import{ToastrModule} from "ngx-toastr";
+import { FilterColorPipe } from './pipes/filter-color.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import{ToastrModule} from "ngx-toastr";
     RentaldtoComponent,
     FilterPipePipe,
     FilterbrandpipePipe,
+    FilterColorPipe,
   ],
   imports: [
     BrowserModule,
