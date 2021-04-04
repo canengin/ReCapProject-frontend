@@ -12,10 +12,11 @@
       <th>Car Name</th>
       <th>Model Year</th>
       <th>Daily Price</th>
+      <th></th>
     </tr>
   </thead>
-  <tbody>
-    <tr (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" *ngFor="let car of cars | filterPipe:filterText">
+  <tbody class="bodydto">
+    <tr  *ngFor="let car of cars | filterPipe:filterText">
       <td>
         <div ngFor="let image of carImages">
           <div>
@@ -26,6 +27,9 @@
       <td>{{ car.name }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice|currency }}</td>
+      <td >
+        <button (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" type="button" class="btn btn-success">Detaylar</button>
+      </td>
     </tr>
   </tbody>
 </table>

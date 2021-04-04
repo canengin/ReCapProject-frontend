@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Cardto } from 'src/app/models/cardto';
 import { CarImage } from 'src/app/models/carimage';
 import { CarService } from 'src/app/services/car.service';
@@ -18,7 +19,8 @@ export class CardtoComponent implements OnInit {
   
   constructor(private carService:CarService, 
     private activetedRoute:ActivatedRoute,
-    private carImageService:CarimageService) { }
+    private carImageService:CarimageService,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activetedRoute.params.subscribe(params => {
@@ -46,5 +48,10 @@ export class CardtoComponent implements OnInit {
   {
     let newPath = this.path + image;
     return newPath; 
+  }
+  rentToCar(cardto:Cardto){
+    
+  this.toastrService.success("Araç seçildi",cardto.carName)
+    
   }
 }

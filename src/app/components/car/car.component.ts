@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Cardto } from 'src/app/models/cardto';
 import { CarImage } from 'src/app/models/carimage';
@@ -23,7 +24,9 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private carImageService:CarimageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastrService:ToastrService
+
   ) {}
 
   ngOnInit(): void {
@@ -54,8 +57,10 @@ export class CarComponent implements OnInit {
     });
   }
   getCardtos(id: number) {
+    
     this.carService.getCardtos(id).subscribe((response) => {
       this.carDtos = response.data;
+      this.toastrService.success('Detaylara yönlendiriliyorsunuz',"Başarılı");
     });
   }
   getAllCardtos() {
