@@ -16,7 +16,8 @@ export class CarComponent implements OnInit {
   carDtos: Cardto[] = [];
   carImages:CarImage[] = [];
   currentCar:Car;
-
+  filterText="";
+  
   path = "https://localhost:44308/Images";
 
   constructor(

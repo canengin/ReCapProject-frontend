@@ -1,14 +1,21 @@
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ürün Ara">
+</div>
+<div *ngIf="filterText" class="alert alert-primary">
+  {{filterText}} aradınız
+</div>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th></th>
-      <th>Car ID</th>
+      <th>Car Name</th>
       <th>Model Year</th>
       <th>Daily Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" *ngFor="let car of cars">
+    <tr (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" *ngFor="let car of cars | filterPipe:filterText">
       <td>
         <div ngFor="let image of carImages">
           <div>
@@ -16,7 +23,7 @@
           </div>
         </div>
       </td>
-      <td>{{ car.id }}</td>
+      <td>{{ car.name }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice|currency }}</td>
     </tr>
