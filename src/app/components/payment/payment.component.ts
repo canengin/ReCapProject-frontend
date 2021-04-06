@@ -21,6 +21,7 @@ export class PaymentComponent implements OnInit {
   constructor(private rentalService:RentalService, private paymentService:PaymentService, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
+    
   }
 
   addPayment()

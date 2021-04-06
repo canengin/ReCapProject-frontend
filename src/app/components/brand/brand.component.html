@@ -1,25 +1,16 @@
 <div class="form-row align-items-center">
   <div class="col-md-12">
-    <input
-    [(ngModel)]="filterBrandText"
-    type="text"
-    class="form-control"
-    id="filterBrandText"
-    style="margin-bottom: 10px;"
-    placeholder="Marka"
-  />
-    <select [(ngModel)]="currentBrand" class="custom-select custom-select-md mb-3" id="inlineFormCustomSelect" style="width: 250px;" (change)="setParams(currentBrand)">
-      <option [class]="getAllBrandClass()" routerLink="/cars" selected>Tümünü Seç</option>
-      <option
-        (click)="setCurrentBrand(brand)"
-        
-        *ngFor="let brand of brands | filterbrandpipe:filterBrandText"
-        [class]="getCurrentBrandClass(brand)"
-        [ngValue]="brand"
-      >
-      {{ brand.name }}
+    <input [(ngModel)]="filterBrandText" type="text" class="form-control" id="filterBrandText"
+      style="margin-bottom: 10px;" placeholder="Marka" />
+
+    <select [(ngModel)]="currentBrand" class="custom-select custom-select-md mb-3" id="inlineFormCustomSelect"
+      style="width: 250px;" (change)="setParams(currentBrand)">
+      <option [class]="getAllBrandClass()" routerLink="/cars" >Tümünü Seç</option>
+      <option (click)="setCurrentBrand(brand)" *ngFor="let brand of brands | filterbrandpipe:filterBrandText"
+        [class]="getCurrentBrandClass(brand)" [ngValue]="brand">
+        {{ brand.name }}
       </option>
-      
+
     </select>
   </div>
 </div>

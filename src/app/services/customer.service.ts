@@ -6,22 +6,20 @@ import { Customerdto } from '../models/customerdto';
 import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
+  apiUrl = 'https://localhost:44308/api/';
 
-  apiUrl = 'https://localhost:44308/api/customers/getall';
-  apiUrl2 = 'https://localhost:44308/api/customers/getcustomerdetails';
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  getCustomers():Observable<ListResponseModel<Customer>>
-  {
-      return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl);
+  getCustomers(): Observable<ListResponseModel<Customer>> {
+    let newPath = this.apiUrl + 'customers/getall';
+    return this.httpClient.get<ListResponseModel<Customer>>(newPath);
   }
 
-  getCustomerDtos():Observable<ListResponseModel<Customerdto>>
-  {
-      return this.httpClient.get<ListResponseModel<Customerdto>>(this.apiUrl2);
+  getCustomerDtos(): Observable<ListResponseModel<Customerdto>> {
+    let newPath = this.apiUrl + 'customers/getcustomerdetails';
+    return this.httpClient.get<ListResponseModel<Customerdto>>(newPath);
   }
 }
