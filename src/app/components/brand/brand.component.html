@@ -9,7 +9,7 @@
     placeholder="Marka"
   />
     <select [(ngModel)]="currentBrand" class="custom-select custom-select-md mb-3" id="inlineFormCustomSelect" style="width: 250px;" (change)="setParams(currentBrand)">
-      <option [class]="getAllBrandClass()" routerLink="/cars">Tümünü Seç</option>
+      <option [class]="getAllBrandClass()" routerLink="/cars" selected>Tümünü Seç</option>
       <option
         (click)="setCurrentBrand(brand)"
         

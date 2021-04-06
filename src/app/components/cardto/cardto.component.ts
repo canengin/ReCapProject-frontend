@@ -16,11 +16,13 @@ export class CardtoComponent implements OnInit {
   carImages:CarImage[]=[];
 
   path = "https://localhost:44308/Images/";
+  isRented:boolean;
   
   constructor(private carService:CarService, 
     private activetedRoute:ActivatedRoute,
     private carImageService:CarimageService,
-    private toastrService:ToastrService) { }
+    private toastrService:ToastrService,
+    ) { }
 
   ngOnInit(): void {
     this.activetedRoute.params.subscribe(params => {
@@ -53,5 +55,19 @@ export class CardtoComponent implements OnInit {
     
   this.toastrService.success("Araç seçildi",cardto.carName)
     
+  }
+  getRentalPage(isRented:boolean)
+  {
+    this.isRented = isRented;
+    if(this.isRented == false)
+    {
+      return true;
+      
+     
+    }
+    else{
+      this.toastrService.error("This car has already been rented. Please choose another car.");
+      return false;
+    }
   }
 }

@@ -1,11 +1,14 @@
 .img-gallery
 {
-    width: 500px;
-    height: 500px;
     margin-top: 30px;
 }
 
 .image-section
 {
     margin-top: 30px;
+}
+
+.btn-goback
+{
+    float:right;
 }

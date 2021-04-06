@@ -14,12 +14,12 @@ import { UserComponent } from './components/user/user.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CardtoComponent } from './components/cardto/cardto.component';
-import { RentaldtoComponent } from './components/rentaldto/rentaldto.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FilterbrandpipePipe } from './pipes/filterbrandpipe.pipe';
 
 import{ToastrModule} from "ngx-toastr";
 import { FilterColorPipe } from './pipes/filter-color.pipe';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +32,11 @@ import { FilterColorPipe } from './pipes/filter-color.pipe';
     NaviComponent,
     CustomerComponent,
     CardtoComponent,
-    RentaldtoComponent,
+
     FilterPipePipe,
     FilterbrandpipePipe,
     FilterColorPipe,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

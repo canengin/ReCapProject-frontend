@@ -1,11 +1,27 @@
+<div class="row image-section">
+  <div *ngFor="let image of carImages" class="col-md-4 img-gallery">
+    <img [src]="getImagePath(image.imagePath)" class="img-fluid" [alt]="getImagePath(image.imagePath)" />
+  </div>
+</div>
+
 <ul *ngIf="carDtos" class="list-group list-group-flush">
   <li class="list-group-item">Marka: {{ carDtos.brandName }}</li>
   <li class="list-group-item">Renk: {{ carDtos.colorName }}</li>
   <li class="list-group-item">Yıl: {{ carDtos.modelYear }}</li>
   <li class="list-group-item">Fiyat: {{ carDtos.dailyPrice }}</li>
-  <li class="list-group-item">Kiralama Durum: {{ carDtos.isRented }}</li>
-  <li *ngFor="let image of carImages" class="img-gallery list-group-item ">
-    <img [src]="getImagePath(image.imagePath)" class="img-fluid img-gallery" [alt]="getImagePath(image.imagePath)" />
-  </li>
-  <li class="list-group-item"><button (click)="rentToCar(carDtos)" type="button" class="btn btn-success  ">Kirala</button></li>
+  <li class="list-group-item">Durumu: {{ carDtos.isRented }}</li>
 </ul>
+
+<div class="btn-goback" style="margin-bottom: 30px">
+  <button type="button" class="btn btn-xs btn-success" style="width: 100px; margin-right: 10px"
+    (click)="getRentalPage(carDtos.isRented)">
+    Kirala
+  </button>
+  <button routerLink="/cars" type="button" class="btn btn-xs btn-primary" style="width: 100px; margin-right: 10px;">
+    Araçlara Geri Dön
+  </button>
+</div>
+
+<div class="d-grid gap-2 mb-2" *ngIf="isRented == false">
+  <app-rental [carforrental]="carDtos"></app-rental>
+</div>

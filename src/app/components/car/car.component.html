@@ -1,9 +1,38 @@
-<div class="mb-3">
+<div class="form-group">
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ürün Ara">
 </div>
 <div *ngIf="filterText" class="alert alert-primary">
   {{filterText}} aradınız
 </div>
+
+<div class="row">
+  <div class="col-md-5">
+    <label class="mr-sm-2" for="inlineFormCustomSelect"> Markalar </label>
+    <select class="custom-select custom-select-md mb-3" [(ngModel)]="brandId">
+      <option selected>Tüm Markalar</option>
+      <option [value]="brand.id" *ngFor="let brand of brands" [selected]="getSelectedBrandId(brand.id)">
+        {{ brand.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-5">
+    <label class="mr-sm-2" for="inlineFormCustomSelect"> Renkler </label>
+    <select class="custom-select custom-select-md mb-3" [(ngModel)]="colorId" aria-placeholder="All Colors">
+      <option selected>Tüm Renkler</option>
+      <option *ngFor="let color of colors" [value]="color.id" [selected]="getSelectedColorId(color.id)">
+        {{ color.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-2" style="margin-top: 30px; width: 100px">
+    <button class="btn btn-success" routerLink="/cars/filter/{{ brandId }}/{{ colorId }}">
+      Filter
+    </button>
+  </div>
+</div>
+
+
+
 
 <table class="table">
   <thead class="thead-dark">
@@ -15,18 +44,19 @@
       <th></th>
     </tr>
   </thead>
-  <tbody class="bodydto">
-    <tr  *ngFor="let car of cars | filterPipe:filterText ">
+  <tbody >
+    <tr *ngFor="let car of cars | filterPipe:filterText ">
       <td>
         <div>
-            <img src="https://localhost:44308/Images/{{car.previewImagePath}}" class="img-fluid" />
+          <img src="https://localhost:44308/Images/{{car.previewImagePath}}" class="img-fluid" />
         </div>
       </td>
       <td>{{ car.name }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice|currency }}</td>
-      <td >
-        <button (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" type="button" class="btn btn-success">Detaylar</button>
+      <td>
+        <button (click)="setCurrentCar(car)" routerLink="/cars/cardto/{{car.id}}" type="button"
+          class="btn btn-xs btn-primary">Detaylar</button>
       </td>
     </tr>
   </tbody>
