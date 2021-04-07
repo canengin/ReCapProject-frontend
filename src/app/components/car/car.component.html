@@ -25,23 +25,21 @@
     </select>
   </div>
   <div class="col-md-2" style="margin-top: 30px; width: 100px">
-    <button class="btn btn-success" routerLink="/cars/filter/{{ brandId }}/{{ colorId }}">
+    <button class="btn btn-success" (click)="getFilter()">
       Filter
     </button>
   </div>
 </div>
 
 
-
-
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th></th>
-      <th>Car Name</th>
-      <th>Model Year</th>
-      <th>Daily Price</th>
-      <th></th>
+      <th scope="col"></th>
+      <th scope="col">Car Name</th>
+      <th scope="col">Model Year</th>
+      <th scope="col">Daily Price</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody >

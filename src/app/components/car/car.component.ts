@@ -147,6 +147,11 @@ export class CarComponent implements OnInit {
       return false;
     }
   }
+  getFilter() {
+    console.log(this.brandId)
+    this.getCarsByBrandId(this.brandId);
+    this.getCarsByColorId(this.colorId);
+  }
 }
 
 
