@@ -51,5 +51,8 @@ export class CarService {
     let newPath = this.apiUrl + "cars/getallcardetailsbyfilter?brandId=" + brandId + "&colorId=" + colorId;
     return this.httpClient.get<ListResponseModel<Cardto>>(newPath);
   }
+  add(car:Car){
+    return this.httpClient.post(this.apiUrl+'cars/add',car);
+  }
 
 }
